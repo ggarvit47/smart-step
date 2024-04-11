@@ -1,0 +1,249 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+.woocommerce form .form-row .required {
+	visibility: unset;
+}
+
+.required{
+	color: #FF0E0E !important;
+}
+
+.loader-rotate {
+	-webkit-animation: spin 1s linear infinite;
+	-moz-animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
+}
+
+@-moz-keyframes spin {
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+.course-categories {
+	flex-wrap: wrap;
+	justify-content: unset;
+	gap: 12px;
+	row-gap: 20px;
+}
+
+.course-categories .category-item {
+	background: #d1e2ff;
+	margin: 0;
+}
+
+.course-categories .category-item i,
+.course-categories .category-item h4,
+.course-categories .category-item p {
+	color: #333;
+}
+
+.course-category:before {
+	background: rgb(0 0 0 / 35%);
+}
+
+.course-category {
+	min-height: 180px;
+	display: flex;
+	align-items: end;
+	justify-content: center;
+}
+
+.widget {
+	margin-bottom: 26px;
+	padding-bottom: 26px;
+}
+
+.widget_layered_nav li {
+	margin-bottom: 0.1rem;
+}
+
+.widget ul li a {
+	font-size: 14px;
+	padding: 0;
+}
+
+.widget_layered_nav li a,
+.widget_layered_nav li span {
+	font-size: 14px;
+}
+
+.widget .widget-title {
+	margin-bottom: 16px;
+}
+
+.site-navigation {
+	box-shadow: 0 2px 2px #3f5c6e26;
+}
+
+.blog-post-item .post-item .post-content p {
+	font-size: 14px;
+	line-height: 22px;
+	margin-bottom: 0px;
+}
+
+.blog-post-item .post-title {
+	margin: 6px 0px 12px;
+}
+
+.breadcrumb {
+	background: none;
+	padding: 0;
+	margin-top: 6px;
+}
+
+.breadcrumb li {
+	font-size: 12px;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+	padding-left: 4px;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+	padding-right: 4px;
+}
+
+/* Profile Page Start */
+
+.main-body {
+	padding: 15px;
+}
+.card {
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 0 solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+}
+
+.card-body {
+	flex: 1 1 auto;
+	min-height: 1px;
+	padding: 1rem;
+}
+
+.gutters-sm {
+	margin-right: -8px;
+	margin-left: -8px;
+}
+
+.gutters-sm > .col,
+.gutters-sm > [class*="col-"] {
+	padding-right: 8px;
+	padding-left: 8px;
+}
+.mb-3,
+.my-3 {
+	margin-bottom: 1rem !important;
+}
+
+.bg-gray-300 {
+	background-color: #e2e8f0;
+}
+.h-100 {
+	height: 100% !important;
+}
+.shadow-none {
+	box-shadow: none !important;
+}
+
+/* Profile Page End */
+
+
+/* Steps Start */
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 12px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+	text-align: center;
+	font-weight: 600;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+    background: #d6d6d6;
+    border-radius: 25px;
+    margin: 0 auto 4px auto;
+    display: flex;
+	align-items: center;
+    justify-content: center;
+	font-weight: 700;
+	z-index: 22;
+	position: relative;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #d6d6d6;
+    position: absolute;
+    left: -50%;
+    top: 10px;
+    z-index: 0; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps blue*/
+/*The number of the step and the connector before it = blue*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #2098ce;
+    color: white;
+}
+
+/* Steps End */
