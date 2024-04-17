@@ -5,8 +5,12 @@ import Checkbox from '../../components/FromElements/Checkbox'
 import { REQUIRED_MSG } from '../../constants';
 import { updateProfile } from '../../services/auth';
 import { deepEqual } from '../../utils';
+import { updateTotalCompletedTask } from '../../redux/features/UserSlice';
+import { useDispatch } from 'react-redux';
 
 const Step6 = ({ changeSteps, academicData }) => {
+
+    const dispatch = useDispatch();
 
     const { handleSubmit, register, formState: { errors }, setValue } = useForm();
 
@@ -36,6 +40,7 @@ const Step6 = ({ changeSteps, academicData }) => {
             console.log("data >", data);
             const response = await updateProfile({ studyGoalsAndCareerAspirations: data });
             // changeSteps(3)
+            dispatch(updateTotalCompletedTask(6))
         } catch (error) {
             console.log(error);
         }

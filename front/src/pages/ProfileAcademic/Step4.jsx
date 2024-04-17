@@ -5,8 +5,12 @@ import Input from '../../components/FromElements/Input'
 import { REQUIRED_MSG } from '../../constants';
 import { deepEqual } from '../../utils';
 import { updateProfile } from '../../services/auth';
+import { useDispatch } from 'react-redux';
+import { updateTotalCompletedTask } from '../../redux/features/UserSlice';
 
 const Step4 = ({ changeSteps, academicData }) => {
+
+    const dispatch = useDispatch();
 
     const { handleSubmit, register, formState: { errors }, setValue } = useForm();
 
@@ -36,6 +40,7 @@ const Step4 = ({ changeSteps, academicData }) => {
             console.log("data >", data);
             const response = await updateProfile({ studyGoalsAndCareerAspirations: data });
             changeSteps(5)
+            dispatch(updateTotalCompletedTask(4))
         } catch (error) {
             console.log(error);
         }

@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 
 import Select from '../../components/FromElements/Select'
 import Input from '../../components/FromElements/Input'
 import { EDUCATION_LEVEL, REQUIRED_MSG } from '../../constants'
 import { updateProfile } from '../../services/auth'
 import { deepEqual } from '../../utils'
+import { updateTotalCompletedTask } from '../../redux/features/UserSlice'
 
 const Step1 = ({ changeSteps, academicData }) => {
+
+    const dispatch = useDispatch();
 
     const { handleSubmit, register, formState: { errors }, setValue } = useForm();
 
@@ -37,6 +41,7 @@ const Step1 = ({ changeSteps, academicData }) => {
         try {
             const response = await updateProfile({ academicBackground: data });
             changeSteps(2)
+            dispatch(updateTotalCompletedTask(1))
         } catch (error) {
             console.log(error);
         }

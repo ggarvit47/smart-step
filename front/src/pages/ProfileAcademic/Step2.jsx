@@ -7,8 +7,12 @@ import { COURSE_DURATION, FIELD_LEVEL, STUDY_LEVEL } from '../../constants'
 import { REQUIRED_MSG } from '../../constants'
 import { updateProfile } from '../../services/auth'
 import { deepEqual } from '../../utils'
+import { useDispatch } from 'react-redux'
+import { updateTotalCompletedTask } from '../../redux/features/UserSlice';
 
 const Step2 = ({ changeSteps, academicData }) => {
+
+    const dispatch = useDispatch();
 
     const { handleSubmit, register, formState: { errors }, setValue } = useForm();
 
@@ -47,6 +51,7 @@ const Step2 = ({ changeSteps, academicData }) => {
             console.log("data >", data);
             const response = await updateProfile({ studyPreferences: data });
             changeSteps(3)
+            dispatch(updateTotalCompletedTask(2))
         } catch (error) {
             console.log(error);
         }

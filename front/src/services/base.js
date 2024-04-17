@@ -9,7 +9,6 @@ const baseAxios = axios.create({
 baseAxios.interceptors.request.use(function (config) {
     // console.log("config >>", config)
     const token = store.getState().auth.token;
-    console.log("token >>", token);
 
     token && (config.headers.Authorization = `Bearer ${token}`)
     return config;
@@ -26,8 +25,8 @@ baseAxios.interceptors.response.use(function (response) {
 
 }, function (error) {
     if (error.response && error.response.status === 401) {
-        // localStorage.clear();
-        // window.location.href = "/login";
+        localStorage.clear();
+        window.location.href = "/login";
     }
     // console.log("error >>", error)
     return Promise.reject(error);
