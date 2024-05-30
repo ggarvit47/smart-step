@@ -14,7 +14,7 @@ const Footer = () => {
                     <div className="col-lg-4 mr-auto col-sm-6 col-md-6">
                         <div className="widget footer-widget mb-5 mb-lg-0">
                             <h5 className="widget-title">About Us</h5>
-                            <p className="mt-3">Veniam Sequi molestias aut necessitatibus optio magni at natus accusamus.Lorem ipsum dolor sit amet, consectetur adipisicin gelit, sed do eiusmod tempor incididunt .</p>
+                            <p className="mt-3">Welcome to Smart Steps: International Student Application Assistance! We simplify the university application process for international students aspiring to study in Australia.</p>
                             <ul className="list-inline footer-socials">
                                 <li className="list-inline-item"><a href="#"><i className="fab fa-facebook-f"></i></a></li>
                                 <li className="list-inline-item"> <a href="#"><i className="fab fa-twitter"></i></a></li>
@@ -53,20 +53,20 @@ const Footer = () => {
                                 <li><i className="bi bi-headphone"></i>
                                     <div>
                                         <strong>Phone number</strong>
-                                        (68) 345 5902
+                                        (61) 434 592 145
                                     </div>
 
                                 </li>
                                 <li> <i className="bi bi-envelop"></i>
                                     <div>
                                         <strong>Email Address</strong>
-                                        info@yourdomain.com
+                                        smartsteps@gmail.com
                                     </div>
                                 </li>
                                 <li><i className="bi bi-location-pointer"></i>
                                     <div>
                                         <strong>Office Address</strong>
-                                        Moon Street Light Avenue
+                                        Hawthorn East
                                     </div>
                                 </li>
                             </ul>
