@@ -27,9 +27,9 @@ const Step5 = ({ changeSteps, academicData }) => {
 
     useEffect(() => {
         if (academicData.additionalInformation) {
-            setValue("shortTermStudyGoals", academicData.additionalInformation.specialRequirements)
-            setValue("longTermCareerAspirations", academicData.additionalInformation.previousStudyAbroadExperience)
-            setValue("studyAbroadExpectations", academicData.additionalInformation.otherComments)
+            setValue("shortTermStudyGoals", academicData.additionalInformation.shortTermStudyGoals)
+            setValue("longTermCareerAspirations", academicData.additionalInformation.longTermCareerAspirations)
+            setValue("studyAbroadExpectations", academicData.additionalInformation.studyAbroadExpectations)
         }
     }, [academicData]);
 
@@ -37,8 +37,8 @@ const Step5 = ({ changeSteps, academicData }) => {
 
     const profileUpdateEP = async (data) => {
         try {
-            console.log("data >", data);
-            const response = await updateProfile({ studyGoalsAndCareerAspirations: data });
+            // console.log("data >", data);
+            const response = await updateProfile({ additionalInformation: data });
             changeSteps(6)
             dispatch(updateTotalCompletedTask(5))
         } catch (error) {

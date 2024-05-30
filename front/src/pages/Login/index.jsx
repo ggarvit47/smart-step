@@ -23,7 +23,7 @@ const Login = () => {
         try {
             const response = await loginUser(data);
             successToast(response.data.message)
-            dispatch(authLogin(response.data.data))
+            dispatch(authLogin(response.data))
         } catch (error) {
             errorToast(error.response.data.message)
         } finally{

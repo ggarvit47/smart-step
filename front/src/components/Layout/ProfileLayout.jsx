@@ -19,14 +19,14 @@ const ProfileLayout = ({ children }) => {
     }
 
     const updateFormStep = (data) => {
-        let stepNo = 1;
+        let stepNo = 0;
         if (data?.academicBackground) {
             stepNo = 1
         }
         if (data?.studyPreferences) {
             stepNo = 2
         }
-        if (data?.universityPreferences) {
+        if (data?.universityPreferences && data?.universityPreferences.universitiesOfInterest.length > 0) {
             stepNo = 3
         }
         if (data?.studyGoalsAndCareerAspirations) {
@@ -88,6 +88,24 @@ const ProfileLayout = ({ children }) => {
                                     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                                         <FaUser />
                                         <Link to="/study-preferences">Study Preferences</Link>
+                                    </div>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                                        <FaUser />
+                                        <Link to="/document-management">Document Management</Link>
+                                    </div>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                                        <FaUser />
+                                        <Link to="/applied-universities">Applied Universities</Link>
+                                    </div>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                                        <FaUser />
+                                        <Link to="/agent-notification">Agent Notification</Link>
                                     </div>
                                 </li>
                                 {/* <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">

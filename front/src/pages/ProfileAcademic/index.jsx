@@ -22,6 +22,7 @@ const ProfileAcademic = () => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.auth.userData)
+    const totalCompletedTask = useSelector(state => state.user.totalCompletedTask);
 
     const [activaTab, setActiveTab] = useState(1);
     const [academicData, setAcademicData] = useState({});
@@ -44,14 +45,14 @@ const ProfileAcademic = () => {
     }
 
     const updateFormStep = (data) => {
-        let stepNo = 1;
+        let stepNo = 0;
         if (data?.academicBackground) {
             stepNo = 1
         }
         if (data?.studyPreferences) {
             stepNo = 2
         }
-        if (data?.universityPreferences) {
+        if (data?.universityPreferences && data?.universityPreferences.universitiesOfInterest.length > 0) {
             stepNo = 3
         }
         if (data?.studyGoalsAndCareerAspirations) {
@@ -63,7 +64,7 @@ const ProfileAcademic = () => {
         if (data?.consentAndAgreement?.consentToUsePersonalInformation) {
             stepNo = 6;
         }
-        setActiveTab(stepNo < 6 ? (stepNo + 1) : stepNo);
+        setActiveTab(stepNo < 6 ? (stepNo + 1) : 1);
         dispatch(updateTotalCompletedTask(stepNo));
     }
 
@@ -91,6 +92,9 @@ const ProfileAcademic = () => {
             <ProfileLayout>
                 <div className="card mb-3">
                     <div className="card-body">
+                        {totalCompletedTask === 6 && <div class="alert alert-success" role="alert">
+                            COMPLETE! Thank you for completing all the steps, you can apply to universities now.
+                        </div>}
                         {/* <ul id="progressbar">
                                             <li className="active">Academic Background</li>
                                             <li>Study Preferences</li>

@@ -1,7 +1,12 @@
 import React from 'react'
 import { IMG_LOGO } from '../Images'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Footer = () => {
+
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+
     return (
         <section className="footer pt-120">
             <div className="container">
@@ -21,13 +26,10 @@ const Footer = () => {
 
                     <div className="col-lg-4 col-sm-6 col-md-6">
                         <div className="footer-widget mb-5 mb-lg-0">
-                            <h5 className="widget-title">Company</h5>
+                            <h5 className="widget-title">Links</h5>
                             <ul className="list-unstyled footer-links">
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">Privacy policy</a></li>
+                                <li><Link to="/explore">Explore</Link></li>
+                                {isLoggedIn && <li><Link to="/profile">Profile</Link></li>}
                             </ul>
                         </div>
                     </div>

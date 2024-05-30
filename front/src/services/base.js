@@ -24,7 +24,7 @@ baseAxios.interceptors.response.use(function (response) {
     return response;
 
 }, function (error) {
-    if (error.response && error.response.status === 401) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
         localStorage.clear();
         window.location.href = "/login";
     }

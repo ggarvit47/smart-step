@@ -38,7 +38,7 @@ const Step6 = ({ changeSteps, academicData }) => {
     const profileUpdateEP = async (data) => {
         try {
             console.log("data >", data);
-            const response = await updateProfile({ studyGoalsAndCareerAspirations: data });
+            const response = await updateProfile({ consentAndAgreement: data });
             // changeSteps(3)
             dispatch(updateTotalCompletedTask(6))
         } catch (error) {
@@ -69,7 +69,7 @@ const Step6 = ({ changeSteps, academicData }) => {
                 <a onClick={() => changeSteps(5)} style={{ marginRight: "30px", fontWeight: "600", cursor: "pointer" }}>
                     <i className="fa fa-angle-left ml-2"></i> Back
                 </a>
-                <button className="btn btn-outline-dark" style={{ border: "1px solid #000" }} type="submit">Next Question <i className="fa fa-angle-right ml-2"></i></button>
+                <button className="btn btn-outline-dark" style={{ border: "1px solid #000" }} type="submit">Finish <i className="fa fa-angle-right ml-2"></i></button>
             </div>
         </form>
     )

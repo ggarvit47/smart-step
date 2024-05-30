@@ -1,7 +1,39 @@
-import React from 'react'
-import { IMG_CANADA } from "../../components/Images"
+import React, { useEffect, useState } from 'react'
+import { getDiscipline } from '../../services/university';
+import { Link } from 'react-router-dom';
+import { AUS_STATES } from '../../constants/University';
+
+import { IMG_CANADA, IMG_NEW_SOUTH, IMG_VICTORIA, IMG_QUEENSLAND, IMG_WESTERN_AUS, IMG_SOUTH_AUS, IMG_TASMANIA, IMG_NORTHERN_TERRITORY } from "../../components/Images"
 
 const Home = () => {
+
+    const [disciplineData, setDisciplineData] = useState([]);
+
+    useEffect(() => {
+        fetchDiscipline();
+    }, [])
+
+    const stateImgObj = {
+        0: IMG_NEW_SOUTH,
+        1: IMG_VICTORIA,
+        2: IMG_QUEENSLAND,
+        3: IMG_WESTERN_AUS,
+        4: IMG_SOUTH_AUS,
+        5: IMG_TASMANIA,
+        6: IMG_NORTHERN_TERRITORY
+    };
+
+    // EP
+    const fetchDiscipline = async () => {
+        try {
+            const response = await getDiscipline();
+            console.log("response >>", response);
+            setDisciplineData(response.data)
+        } catch (error) {
+            console.log("error >", error);
+        }
+    }
+
     return (
         <>
             <section className="banner">
@@ -13,12 +45,12 @@ const Home = () => {
                                 <span className="subheading mb-5">Discover thousands of Master's degrees worldwide!</span>
                                 {/* <a href="#" className="btn btn-main"><i className="fa fa-list-ul mr-2"></i>our Courses </a>
                                 <a href="#" className="btn btn-tp ">get Started <i className="fa fa-angle-right ml-2"></i></a> */}
-                                <div className="form-banner">
+                                {/* <div className="form-banner">
                                     <form action="#" className="form-search-banner">
                                         <input type="text" className="form-control" placeholder="What do study?" />
                                         <a href="#" className="btn btn-main">Search<i className="fa fa-search ml-2"></i> </a>
                                     </form>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -79,81 +111,19 @@ const Home = () => {
 
                     <div className="row no-gutters">
                         <div className="course-categories">
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-laptop"></i>
+                            {disciplineData.map((data, index) => <div key={index} className="category-item">
+                                <Link to={`/explore/${data.slug}`}>
+                                    <div className="category-icon mb-3">
+                                        {/* <i className="bi bi-laptop"></i> */}
+                                        <img src={`${process.env.REACT_APP_SITE_URL}/${data.icon}`} width={80} />
                                     </div>
-                                    <h4>Web Development</h4>
-                                    <p>(4 Courses)</p>
-                                </a>
-                            </div>
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-layer"></i>
-                                    </div>
-                                    <h4>Design</h4>
-                                    <p>(12 Courses)</p>
-                                </a>
-                            </div>
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-target-arrow"></i>
-                                    </div>
-                                    <h4>Marketing</h4>
-                                    <p>(6 Courses)</p>
-                                </a>
-                            </div>
-
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-rocket2"></i>
-                                    </div>
-                                    <h4>Art & Design</h4>
-                                    <p>(6 Courses)</p>
-                                </a>
-                            </div>
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-shield"></i>
-                                    </div>
-                                    <h4>Design</h4>
-                                    <p>(12 Courses)</p>
-                                </a>
-                            </div>
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-shield"></i>
-                                    </div>
-                                    <h4>Design</h4>
-                                    <p>(12 Courses)</p>
-                                </a>
-                            </div>
-                            <div className="category-item">
-                                <a href="#">
-                                    <div className="category-icon">
-                                        <i className="bi bi-shield"></i>
-                                    </div>
-                                    <h4>Design</h4>
-                                    <p>(12 Courses)</p>
-                                </a>
-                            </div>
+                                    <h4>{data.name}</h4>
+                                    {/* <p>(4 Courses)</p> */}
+                                </Link>
+                            </div>)}
                         </div>
                     </div>
 
-                    {/* <div className="row justify-content-center">
-                        <div className="col-lg-6">
-                            <div className="text-center mt-5">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <div className="course-btn mt-4"><a href="#" className="btn btn-main"><i className="fa fa-grip-horizontal mr-2"></i>All Categories</a></div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </section>
 
@@ -163,19 +133,19 @@ const Home = () => {
                         <div className="col-lg-12">
                             <div className="section-heading">
                                 {/* <span className="subheading">Top Categories</span> */}
-                                <h3>Our Top Categories</h3>
+                                <h3>Browse by States</h3>
                                 {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicin gelit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
                             </div>
                         </div>
                     </div>
 
                     <div className="row no-gutters">
-                        {["","","","","","","","","","","",].map(() => <div className="col-lg-3 col-md-6">
-                            <div className="course-category" style={{ background: `url(${IMG_CANADA})`, backgroundSize: "cover" }}>
+                        {AUS_STATES.map((state, index) => <div className="col-lg-3 col-md-6">
+                            <div className="course-category" style={{ background: `url(${stateImgObj[index]})`, backgroundSize: "cover" }}>
                                 {/* <div className="category-icon">
                                     <i className="bi bi-laptop"></i>
                                 </div> */}
-                                <h4><a href="#">Canada</a></h4>
+                                <h4><Link to={`/explore/?state=${state}`}>{state}</Link></h4>
                                 {/* <p>4 Courses</p> */}
                             </div>
                         </div>)}

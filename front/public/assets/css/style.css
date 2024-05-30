@@ -3912,12 +3912,12 @@ table {
   background: #141414;
 }
 
-.woocommerce nav.woocommerce-pagination {
+nav.woocommerce-pagination {
   float: none;
   text-align: center;
 }
 
-.woocommerce nav.woocommerce-pagination ul {
+nav.woocommerce-pagination ul {
   display: inline-block;
   clear: both;
   overflow: hidden;
@@ -3927,20 +3927,20 @@ table {
   border: 0px;
 }
 
-.woocommerce .woocommerce-pagination ul.page-numbers::after,
-.woocommerce .woocommerce-pagination ul.page-numbers::before,
-.woocommerce-page .woocommerce-pagination ul.page-numbers::after,
-.woocommerce-page .woocommerce-pagination ul.page-numbers::before {
+.woocommerce-pagination ul.page-numbers::after,
+.woocommerce-pagination ul.page-numbers::before,
+.woocommerce-pagination ul.page-numbers::after,
+.woocommerce-pagination ul.page-numbers::before {
   display: table;
   content: ' ';
 }
 
-.woocommerce .woocommerce-pagination ul.page-numbers li,
-.woocommerce-page .woocommerce-pagination ul.page-numbers li {
+.woocommerce-pagination ul.page-numbers li,
+.woocommerce-pagination ul.page-numbers li {
   display: inline-block;
 }
 
-.woocommerce nav.woocommerce-pagination ul li {
+nav.woocommerce-pagination ul li {
   display: inline;
   border-right: 0px;
   overflow: hidden;
@@ -3948,15 +3948,15 @@ table {
   padding: 0;
 }
 
-.woocommerce nav.woocommerce-pagination ul li a:focus,
-.woocommerce nav.woocommerce-pagination ul li a:hover,
-.woocommerce nav.woocommerce-pagination ul li span.current {
+nav.woocommerce-pagination ul li a:focus,
+nav.woocommerce-pagination ul li a:hover,
+nav.woocommerce-pagination ul li span.current {
   color: #000;
   background: #f5f5f5;
 }
 
-.woocommerce nav.woocommerce-pagination ul li a,
-.woocommerce nav.woocommerce-pagination ul li span {
+nav.woocommerce-pagination ul li a,
+nav.woocommerce-pagination ul li span {
   font-size: 1em;
   font-weight: 600;
   line-height: 1;
@@ -3970,14 +3970,14 @@ table {
   border: 1px solid #ddd;
 }
 
-.woocommerce nav.woocommerce-pagination ul li a:hover,
-.woocommerce nav.woocommerce-pagination ul li span:hover {
+nav.woocommerce-pagination ul li a:hover,
+nav.woocommerce-pagination ul li span:hover {
   background: #FF1949;
   color: #fff;
   border-color: #FF1949;
 }
 
-.woocommerce nav.woocommerce-pagination ul li a {
+nav.woocommerce-pagination ul li a {
   color: #8c8c8c;
 }
 

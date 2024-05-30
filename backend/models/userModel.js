@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
+    agent: [{ type: mongoose.Schema.Types.ObjectId, ref: "Agent" }],
+
     fullName: {
       type: String,
       required: true,
@@ -15,7 +17,7 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    password:{
+    password: {
       type: String,
       required: true,
     },
@@ -100,7 +102,27 @@ const userSchema = new mongoose.Schema(
         default: null,
       },
     },
+    uploadedDocuments: [
+      {
+        filename: String,
+        path: String,
+      },
+    ],
+    passport: {
+      type: String,
+    },
+    secondary: {
+      type: String,
+    },
+    senior: {
+      type: String,
+    },
+    bachelor: {
+      type: String,
+    },
+    customDocuments: [{ name: String, path: String }],
   },
+
   {
     timestamps: true,
   }

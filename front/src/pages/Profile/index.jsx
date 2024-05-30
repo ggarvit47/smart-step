@@ -11,16 +11,16 @@ import SubmitBtn from '../../components/FromElements/SubmitBtn'
 
 const Profile = () => {
 
-    const user = useSelector(state => state.auth.userData)
+    const user = useSelector(state => state.user.userProfile)
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const { handleSubmit, register, formState: { errors }, setValue } = useForm();
 
     useEffect(() => {
-        setValue("fullName", user.fullName);
-        setValue("phoneNumber", user.phoneNumber);
-        setValue("dob", user.dob);
+        setValue("fullName", user?.fullName);
+        setValue("phoneNumber", user?.phoneNumber);
+        setValue("dob", user?.dob);
     }, [user])
 
     // EP

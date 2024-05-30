@@ -12,6 +12,8 @@ const Header = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
     const userData = useSelector(state => state.auth.userData)
 
+    console.log("userData >>", userData);
+
     const handleLogout = (e) => {
         e.preventDefault();
         dispatch(authLogout());
@@ -30,21 +32,26 @@ const Header = () => {
 
                             <ul className="navbar-nav ml-auto">
 
-                                <li className="nav-item ">
+                                {/* <li className="nav-item ">
                                     <a href="#" className="nav-link js-scroll-trigger">
                                         About
                                     </a>
-                                </li>
+                                </li> */}
                                 <li className="nav-item ">
                                     <Link to="/explore" className="nav-link js-scroll-trigger">
                                         Explore
                                     </Link>
                                 </li>
-                                <li className="nav-item ">
+                                {/* <li className="nav-item ">
                                     <a href="#" className="nav-link">
                                         Contact
                                     </a>
-                                </li>
+                                </li> */}
+                                {isLoggedIn && <li className="nav-item ">
+                                    <Link to="/profile" className="nav-link">
+                                        Profile
+                                    </Link>
+                                </li>}
                             </ul>
 
                             {!isLoggedIn && <Link to="/login" className="btn btn-main btn-small">
@@ -58,7 +65,7 @@ const Header = () => {
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbar3">
                                         <Link className="dropdown-item " to="/profile">
-                                            {userData.fullName}
+                                            {userData?.fullName}
                                         </Link>
                                         <a className="dropdown-item " href="#" onClick={handleLogout}>
                                             Logout

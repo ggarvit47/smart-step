@@ -27,7 +27,8 @@ const Signup = () => {
             successToast(response.data.message)
             dispatch(authLogin(response.data))
         } catch (error) {
-            error.response && errorToast(error.response && error.response.data.message || "Something went wrong")
+            // console.log(error);
+            error && errorToast(error.response && error.response.data.message || "Something went wrong, please try again later")
         } finally {
             setIsSubmitting(false);
         }
